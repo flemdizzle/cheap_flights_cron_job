@@ -11,7 +11,6 @@ class Integration
   end
 
   def options
-    binding.pry
     {
       query: {
         key: @amz.api_key,
