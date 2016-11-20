@@ -11,24 +11,33 @@ class Integration
   end
 
   def options
+    binding.pry
     {
       query: {
         key: @amz.api_key,
       },
-      body: {
-        request: {
-          passengers: {
-            adultCount: 1
+      body: request
+    }
+  end
+
+  def request
+    {
+      request: {
+        passengers: {
+          adultCount: 1
+        },
+        slice: [
+          {
+            origin: 'BOS',
+            destination: 'LAX',
+            date: '2017-01-01'
           },
-          slice: [
-            {
-              origin: 'SFO',
-              destination: 'LAX',
-              date: '2014-09-19'
-            }
-          ],
-          solutions: 1
-        }
+          {
+            origin: 'LAX',
+            destination: 'BOS',
+            date: '2017-01-02'
+          }
+        ]
       }
     }
   end
