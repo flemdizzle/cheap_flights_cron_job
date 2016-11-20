@@ -3,17 +3,17 @@ class Integration
   require 'httparty'
 
   def initialize
-    @amz = AmazonCredentials.new
+    @qpx = QpxExpressCredentials.new
   end
 
   def hit_amazon
-    HTTParty.post(@amz.url, options)
+    HTTParty.post(@qpx.url, options)
   end
 
   def options
     {
       query: {
-        key: @amz.api_key,
+        key: @qpx.api_key,
       },
       headers: {
         'Content-Type' => 'application/json'
