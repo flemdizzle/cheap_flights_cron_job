@@ -1,5 +1,5 @@
 class Integration
-  load 'amazon_credentials.rb'
+  load 'qpx_express_credentials.rb'
   require 'httparty'
 
   def initialize
