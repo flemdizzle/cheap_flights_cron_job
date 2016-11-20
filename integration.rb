@@ -1,16 +1,25 @@
 class Integration
   load 'qpx_express_credentials.rb'
+  load 'airport_requests_formatter.rb'
   require 'httparty'
 
   def initialize
     @qpx = QpxExpressCredentials.new
+    @requests = AirportRequestsFormatter.new.formatted_requests
   end
 
-  def hit_amazon
-    HTTParty.post(@qpx.url, options)
+  def run
+    hit_qpx_express
   end
 
-  def options
+  def hit_qpx_express
+    @requests.each do |request|
+      response = HTTParty.post(@qpx.url, options(request))
+      process_response(response)
+    end
+  end
+
+  def options(request)
     {
       query: {
         key: @qpx.api_key,
@@ -22,25 +31,8 @@ class Integration
     }
   end
 
-  def request
-    {
-      request: {
-        passengers: {
-          adultCount: 1
-        },
-        slice: [
-          {
-            origin: 'BOS',
-            destination: 'LAX',
-            date: '2017-01-01'
-          },
-          {
-            origin: 'LAX',
-            destination: 'BOS',
-            date: '2017-01-02'
-          }
-        ]
-      }
-    }
+  def process_response(response)
+    puts response
   end
+
 end
