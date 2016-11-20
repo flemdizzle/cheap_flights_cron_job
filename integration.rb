@@ -15,7 +15,10 @@ class Integration
       query: {
         key: @amz.api_key,
       },
-      body: request
+      headers: {
+        'Content-Type' => 'application/json'
+      },
+      body: request.to_json
     }
   end
 
