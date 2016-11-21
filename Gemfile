@@ -4,4 +4,9 @@ source "https://rubygems.org"
 # gem "rails"
 gem 'pry'
 gem 'httparty'
+
+# testing
 gem 'rspec'
+
+# database
+gem 'mongo'

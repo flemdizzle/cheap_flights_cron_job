@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    bson (4.1.1)
     coderay (1.1.1)
     diff-lcs (1.2.5)
     httparty (0.13.1)
@@ -8,6 +9,8 @@ GEM
       multi_xml (>= 0.5.2)
     json (1.8.3)
     method_source (0.8.2)
+    mongo (2.3.1)
+      bson (~> 4.1)
     multi_xml (0.5.5)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -32,5 +35,6 @@ PLATFORMS
 
 DEPENDENCIES
   httparty
+  mongo
   pry
   rspec
