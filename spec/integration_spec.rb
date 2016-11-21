@@ -36,7 +36,7 @@ describe Integration do
     expect(true).to eq(true)
   end
 
-  describe 'hit_qpx_express' do
+  describe 'post_qpx_express' do
 
     let(:response) { {response: true} }
     before do
@@ -46,7 +46,7 @@ describe Integration do
 
     it 'sends each request to google' do
       expect(HTTParty).to receive(:post).once
-      subject.hit_qpx_express
+      subject.post_qpx_express
     end
   end
 end

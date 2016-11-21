@@ -12,10 +12,10 @@ class Integration
   end
 
   def run
-    hit_qpx_express
+    post_qpx_express
   end
 
-  def hit_qpx_express
+  def post_qpx_express
     @requests.each do |request|
       response = HTTParty.post(@qpx.url, options(request))
       process_response(response)
