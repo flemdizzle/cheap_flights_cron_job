@@ -2,12 +2,14 @@ class AirportRequestsFormatter
   require 'yaml'
 
   def formatted_requests
-    {
-      request: {
-        passengers: passengers,
-        slice: [itinerary]
+    [
+      {
+        request: {
+          passengers: passengers,
+          slice: [itinerary]
+        }
       }
-    }
+    ]
   end
 
   def passengers
