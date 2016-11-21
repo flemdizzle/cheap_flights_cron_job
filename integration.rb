@@ -1,6 +1,7 @@
 class Integration
   load 'qpx_express_credentials.rb'
   load 'airport_requests_formatter.rb'
+  load 'qpx_response_parser.rb'
   require 'httparty'
   require 'mongo'
 
@@ -34,7 +35,7 @@ class Integration
   end
 
   def process_response(response)
-    puts response
+    QpxResponseParser.new(response).parse_and_save
     store_in_mongo(response)
   end
 

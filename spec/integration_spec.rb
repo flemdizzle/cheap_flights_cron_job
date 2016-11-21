@@ -41,6 +41,7 @@ describe Integration do
     let(:response) { {response: true} }
     before do
       allow(HTTParty).to receive(:post).and_return(response)
+      allow(subject).to receive(:process_response)
     end
 
     it 'sends each request to google' do
