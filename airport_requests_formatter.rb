@@ -5,7 +5,7 @@ class AirportRequestsFormatter
     {
       request: {
         passengers: passengers,
-        slice: itinerary
+        slice: [itinerary]
       }
     }
   end
@@ -15,7 +15,16 @@ class AirportRequestsFormatter
   end
 
   def itinerary
+    {
+      origin: airport_data['origin'],
+      destination: airport_data['destination'],
+      date: formatted_date
+    }
+  end
 
+  def formatted_date
+    @now ||= Time.now
+    "#{@now.year}-#{@now.month + 1}-#{@now.day}"
   end
 
   def airport_data
